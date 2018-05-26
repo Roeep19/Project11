@@ -19,7 +19,8 @@
         <activity android:name=".Trigo1" />
         <activity android:name=".Zehoyot" />
         <activity android:name=".Credits" />
-        <activity android:name=".Trigo2"></activity>
+        <activity android:name=".Trigo2" />
+        <activity android:name=".Open"></activity>
     </application>
 
 </manifest>

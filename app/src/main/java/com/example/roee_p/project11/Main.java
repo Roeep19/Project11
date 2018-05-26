@@ -40,6 +40,29 @@ public class Main extends AppCompatActivity {
         adb= new AlertDialog.Builder(this);
         et=(EditText)findViewById(R.id.editText);
 
+        write();
+        InputStream is=null;
+        try{
+            is=openFileInput("input.txt");
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        InputStreamReader tmp=new InputStreamReader(is);
+        BufferedReader reader=new BufferedReader(tmp);
+        String st="";
+        buffer=new StringBuffer();
+        try{
+            while ((st=reader.readLine())!=null){
+                buffer.append(st);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        try {
+            is.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void write(){
@@ -67,7 +90,7 @@ public class Main extends AppCompatActivity {
 
     public void cont(View view) {
         if (sw1.isChecked()){
-            adb.setTitle(" , בחר מה לעשות"+buffer);
+            adb.setTitle(" בחר מה לעשות "+buffer);
             adb.setIcon(R.drawable.p1);
             adb.setMessage("בחרת באופציית זהויות הטריגו אשר כוללת את הזהויות היסודיות, סכום והפרש זוויות וזהויות זווית כפולה.");
             adb.setPositiveButton("המשך", new DialogInterface.OnClickListener() {
